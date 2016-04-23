@@ -1,14 +1,12 @@
-def solve_cipher(input)
-	array = input	#.split("")
+def solve_cipher(input, num)
+	array = input
 	code = array.split("")
 	code.each do |translate|
-		result = translate.ord
-		result -= 1
-		puts result
+		char_to_num = translate.ord
+		char_to_num -= 1
+		num_to_char = char_to_num.chr
+		print num_to_char
 	end
-#	puts translate
-	print code
-#print code
 end
 
-solve_cipher("ifmmp")
+solve_cipher("ifmmp", -3)

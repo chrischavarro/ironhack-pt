@@ -1,12 +1,11 @@
 print "Enter your sentence:"
 test = gets.chomp
-array = [test]
+array = test.gsub(/\W/, ' ')
 
-#user_input = gets.chomp
+input = array.split(" ")
 
-input = test.split(",")
-input.sort {|a,b| a <=> b}
+puts input
 
-# input.each do |word|
-# print word
-# end
+input = input.sort {|a,b| a <=> b}
+
+puts input

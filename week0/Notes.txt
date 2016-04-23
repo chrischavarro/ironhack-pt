@@ -6,3 +6,9 @@ git add week0/derp.rb => Will only add this file
 git commit -m "Description" => Will commit file with the description placed in quotes
 
 git push => Will push changes to github
+
+CTRL + SHIFT + K => Deletes the line
+
+CMD + SHIFT + D => Duplicates the line
+
+CMD + D => Replaces all iterations of one phrase with a

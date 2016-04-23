@@ -1,2 +1,2 @@
-puts "Yay, day zero. It's so much fun without Josh."
+puts "Yay, day zero. I've learned to appreciate sleep already."
 puts "Alphabet soup makes me feel dyslexic"

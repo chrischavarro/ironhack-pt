@@ -102,10 +102,10 @@ puts "Do you want to sort by highest or lowest capacity first?"
 
 # Asks user for cities they're looking for rooms in
 puts "What cities do you want to see rooms for?"
-	city_input = (gets.chomp).capitalize
+	city_input = gets.chomp
 
 	city_sort = homes.select do |destination|
-		destination.city == city_input
+		destination.city.downcase == city_input.downcase
 	end
 # Prints out the sorted result
 	sorter(city_sort)

@@ -1,15 +1,30 @@
 class FizzBuzz
 
-	def fizz_buzz?(num)
-		if num % 15 == 0
-			"FizzBuzz"
-		elsif num % 3 == 0
-			"Fizz"
-		elsif num % 5 == 0
-			"Buzz"
-		else
-			num
-		end
+	def fizz?(number)
+		number % 3 == 0
 	end
 
+	def buzz?(number)
+		number % 5 == 0
+	end
+
+	def fizzbuzz?(number)
+		fizz?(number) && buzz?(number)
+	end
+
+	def fizz_printer(number)
+		array = []
+		(1..number).each do | num |
+			if fizz_buzz?(num)
+				array.push("FizzBuzz")
+			elsif buzz?(num)
+				array.push("Buzz")
+			elsif fizz?(num)
+				array.push("Fizz")
+			else
+				array.push(num)
+			end
+		end
+		array
+	end
 end

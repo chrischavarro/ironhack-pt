@@ -50,5 +50,6 @@ class Board
 				puts "You are winnar"
 		else
 			puts "No winnar :("
+		end
 	end
 end

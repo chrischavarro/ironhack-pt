@@ -12,3 +12,27 @@ CTRL + SHIFT + K => Deletes the line
 CMD + SHIFT + D => Duplicates the line
 
 CMD + D => Replaces all iterations of one phrase with a
+
+CTRL + C => Ends an infinite loop or running command
+
+-1 in Ruby refers to last element in an array
+
+[num1..num2] in Ruby refers to specific range of elements in an array
+
+<< and .push add a value to the specified array (sweets.push("Reeses"), sweets << "Creme Brulee")
+
+=> used to assign a value to a key in a hash
+
+All values are inherently truthy, including empty string except for nil and false
+
+IO.read will return contents of a file that you specify
+
+IO.write requires name of file you want to write to along with the content you want to write
+
+.to_sym converts a string into a symbol, .to_string does the opposite
+
+To exit vim, type ESC key and : with 'q!'
+
+CMD + CTRL + Up/Down Arrow shifts selected lines
+
+Initialize method is referred to as the constructor, applicable across multiple languages

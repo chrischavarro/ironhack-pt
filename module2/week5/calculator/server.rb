@@ -23,30 +23,21 @@ end
 
 calculator = Calculator.new
 
-post "/calculate_add" do
+post "/calculate" do
 	first = params[:first_number].to_f
 	second = params[:second_number].to_f
-	result = calculator.add(first,second)
-	"#{first} + #{second} = #{result}"
-end
-
-post "/calculate_subtract" do
-	first = params[:first_number].to_f
-	second = params[:second_number].to_f
-	result = calculator.subtract(first,second)
-	"#{first} - #{second} = #{result}"
-end
-
-post "/calculate_multiply" do
-	first = params[:first_number].to_f
-	second = params[:second_number].to_f
-	result = calculator.multiply(first,second)
-	"#{first} * #{second} = #{result}"
-end
-
-post "/calculate_divide" do
-	first = params[:first_number].to_f
-	second = params[:second_number].to_f
-	result = calculator.divide(first,second)
-	"#{first} / #{second} = #{result}"
+	operation = params[:operation]
+		if operation == "addition"
+			result = calculator.add(first,second)
+			"#{first} + #{second} = #{result}"
+		elsif operation == "subtraction"
+			result = calculator.subtract(first,second)
+			"#{first} - #{second} = #{result}"
+		elsif operation == "multiplication"
+			result = calculator.multiply(first,second)
+			"#{first} * #{second} = #{result}"
+		elsif operation == "division"
+			result = calculator.divide(first,second)
+			"#{first} / #{second} = #{result}"
+	end
 end

@@ -1,32 +1,20 @@
 ---
 Josh:
 - !ruby/object:Task
-  content: Walk the dog
-  id: 1
-  status: complete
-  created_at: 2016-05-21 17:23:00.571238000 -04:00
-  updated_at: 
-- !ruby/object:Task
-  content: Milk the fish
-  id: 2
-  status: complete
-  created_at: 2016-05-21 17:23:00.571240000 -04:00
-  updated_at: 2016-05-21 17:23:00.571245000 -04:00
-- !ruby/object:Task
-  content: Mow the lawn
+  content: Blame Josh
   id: 3
   status: complete
-  created_at: 2016-05-28 15:24:47.591183000 -04:00
+  created_at: 2016-05-28 16:22:53.872733000 -04:00
   updated_at: 
 - !ruby/object:Task
-  content: Rule the world
+  content: Praise Faraz
   id: 4
   status: complete
-  created_at: 2016-05-28 15:31:43.854106000 -04:00
+  created_at: 2016-05-28 16:23:02.569422000 -04:00
   updated_at: 
 - !ruby/object:Task
-  content: Eat Chipotle
+  content: Become a coding expert
   id: 5
-  status: complete
-  created_at: 2016-05-28 15:33:10.477689000 -04:00
+  status: incomplete
+  created_at: 2016-05-28 16:23:16.135491000 -04:00
   updated_at: 

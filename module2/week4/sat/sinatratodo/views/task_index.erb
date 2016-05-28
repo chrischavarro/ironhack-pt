@@ -2,9 +2,21 @@
 <ul>
 	<% @list.tasks.each do | task | %>
 		<% if task.complete? %>
-		<li><a href="/complete_task/<%=task.id%>"><%= task.content %></a> COMPLETE!</li>
+		<li>
+			<%= task.content %> 
+			<a href="/complete_task/<%=task.id%>">Complete</a> COMPLETE! 
+			<form action="/delete_task" method="POST">
+			<button type="submit" name="deleteme" value="<%= task.id%>">Delete</button>
+			</form>
+		</li>
 		<% else %>
-		<li><a href="/complete_task/<%=task.id%>"><%= task.content %></a></li>
+		<li>
+			<%= task.content %>
+			<a href="/complete_task/<%=task.id%>">Complete</a>
+			<form action="/delete_task" method="POST">
+			<button type="submit" name="deleteme" value="<%= task.id%>">Delete</button>
+			</form>
+		</li>
 		<% end %>
 	<% end %>
 </ul>

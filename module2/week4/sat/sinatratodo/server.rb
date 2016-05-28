@@ -33,3 +33,10 @@ get "/complete_task/:id" do
 
 	redirect to "/tasks"
 end
+
+post "/delete_task" do 
+	todo_list.delete_task(params[:deleteme].to_i)
+	todo_list.save
+
+	redirect to "/tasks"
+end

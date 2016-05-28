@@ -18,10 +18,18 @@ get "/new_task" do
 end
 
 post "/create_task" do
-	task_name = params[:task]
-	
-	task = Task.new(task_name)
+	task = Task.new(params[:task])
+
 	todo_list.add_task(task)
 	todo_list.save
+
+	redirect to "/tasks"
+end
+
+get "/complete_task/:id" do
+	a = todo_list.find_task_by_id(params[:id].to_i)
+	a.complete!
+	todo_list.save
+
 	redirect to "/tasks"
 end

@@ -1,7 +1,11 @@
 <h2>Welcome to the TodoList!</h2>
 <ul>
 	<% @list.tasks.each do | task | %>
-		<li><%= task.content %></li>
+		<% if task.complete? %>
+		<li><a href="/complete_task/<%=task.id%>"><%= task.content %></a> COMPLETE!</li>
+		<% else %>
+		<li><a href="/complete_task/<%=task.id%>"><%= task.content %></a></li>
+		<% end %>
 	<% end %>
 </ul>
 

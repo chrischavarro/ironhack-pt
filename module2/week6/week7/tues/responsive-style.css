@@ -1,0 +1,37 @@
+body {
+	background-image: url('josh.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+
+@media screen and (min-width: 320px) {
+	body {
+		background-image:url('320bg.png');
+	}
+}
+
+@media screen and (min-width: 480px) {
+	body {
+		background-image:url('480bg.jpg');
+	}
+}
+
+@media screen and (min-width: 768px) {
+	body {
+		background-image:url('768bg.jpg');
+	}
+}
+
+@media screen and (min-width: 1024px) {
+	body {
+		background-image:url('1024bg.jpeg');
+	}
+}
+
+@media screen and (min-width: 1200px) {
+	body {
+		background-image:url('titanicfaraz.jpg');
+	}
+}
+

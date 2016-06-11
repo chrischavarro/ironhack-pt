@@ -1,0 +1,494 @@
+<!-- <!doctype html>
+<html>
+<head>
+	<title>Online Calculator - Results</title>
+</head>
+<body>
+	<h1>Aw shit, you did some math</h1>
+	<%= @message %>
+	<form action="/calculate_using_result" method="POST">
+		<input type="hidden" name="result" value=<%= @result%>>
+		
+		<button type="submit">Save Result</button>
+
+	</form>
+</body>
+</html>
+ -->
+<!-- BE SURE TO LABEL THE FIRST TABLE SO ITS TEXT IS NOT CENTERED -->
+<!doctype html>
+<html>
+<head>
+	<title>5-3-1 Calculator</title>
+<style>
+table, th, td { 
+	text-align: center;
+	margin-bottom: 20px; 
+}
+
+table#info {
+	float:right;
+}
+
+table#calculator {
+	float:left;	
+	text-align: left;
+}
+
+th, td {
+	padding: 3px;
+}
+
+</style>
+</head>
+<body>
+<!-- <script>
+function FillIn() {
+	document.getElementById('squat_w1s1').innerHTML = <%= @squat %>;  
+}
+</script> -->
+
+<h2 style="text-align:center;">5 / 3 / 1 Weight Lifting Program - 4 Week Plan</h2>
+
+<table border="1" id="calculator">
+<form action="/calculate" method="POST">
+
+	<tr>
+	<td>Exercise</td>
+	<td>1RM</td>
+	<td>90% 1RM</td>
+	</tr>
+	
+	<tr>
+	<td>Squat: </td>
+	<td><input type="text" id="num1" name="first_number" maxlength="4" size="4"></td>
+	<td><%= (@squat * 0.90).round  %></td>
+	</tr> <br>
+
+	<tr>
+	<td>Bench Press: </td>
+	<td><input type="text" id="num2" name="second_number" maxlength="4" size="4"></td> 
+	<td><%= (@bench * 0.90).round %></td>
+	</tr> <br>
+
+	<tr>
+	<td>Deadlift: </td>
+	<td><input type="text" id="num2" name="third_number" maxlength="4" size="4"></td>
+	<td><%= (@deadlift * 0.90).round %></td>
+	</tr> <br>
+
+	<tr>
+	<td>Overhead Press: </td>
+	<td><input type="text" id="num2" name="fourth_number" maxlength="4" size="4"></td>
+	<td><%= (@overhead * 0.90).round %></td>
+	</tr> <br>
+
+	<tr>
+	<td><button type="submit" name="operation" value="multiplication">Calculate</button></td>
+	</tr>
+
+</form>
+</table>
+
+<table border="1" id="info">
+	<tr>
+		<th colspan="2">Links and Info</th>
+	</tr>
+
+	<tr>
+		<td><a href ="http://j.mp/1F46HFG">http://j.mp/1F46HFG</a></td>
+		<td>5/3/1: How to Build Pure Strength</td>
+	</tr>
+
+	<tr>
+		<td><a href="http://j.mp/1nqu9qY">http://j.mp/1nqu9qY</a></td>
+		<td>52 Most Common 5/3/1 Questions</td>
+	</tr>
+
+	<tr>
+		<td><a href="http://j.mp/1zdl9uG">http://j.mp/1zdl9uG</a></td>
+		<td>Jim Wendler's Site</td>
+	</tr>
+
+	<tr>
+		<td><a href="http://j.mp/1vi2n1h">http://j.mp/1zdl9uG</a></td>
+		<td>Get Strong Fast With the 5/3/1</td>
+	</tr>
+
+	<tr>
+		<th colspan>Feedback or requests?</th>
+		<td><a href="email: chavarro.christian@gmail.com">Email me!</a></td>
+	</tr>
+</table>
+
+<!-- WEEK 1 TABLE -->
+<table border="1" cellpadding="1" width="100%">
+<tr>
+<th colspan="12">Week 1</th>	
+</tr>
+<tr>
+	<th colspan="3">Day 1</th>
+	<th colspan="3">Day 2</th>
+	<th colspan="3">Day 3</th>
+	<th colspan="3">Day 4</th>
+</tr>
+
+<tr>
+	<th colspan="3">Squat</th>
+	<th colspan="3">Bench Press</th>
+	<th colspan="3">Deadlift</th>
+	<th colspan="3">Overhead Press</th>
+</tr>
+
+<tr>
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+</tr>
+
+<tr>
+	<td><%= @calc.multiply(@squat, 0.75) %></td>
+	<td>5</td>
+	<td id="squat_w1s1">75</td>
+
+	<td><%= @calc.multiply(@bench, 0.75)  %></td>
+	<td>5</td>
+	<td id="bench_w1s1">75%</td>
+
+	<td><%= @calc.multiply(@deadlift, 0.75)  %></td>
+	<td>5</td>
+	<td id="deadlift_w1s1">75%</td>
+
+	<td><%= @calc.multiply(@overhead, 0.75)  %></td>
+	<td>5</td>
+	<td id="overhead_w1s1">75%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.80).round  %></td>
+	<td>5</td>
+	<td id="squat_w1s2">80%</td>
+
+	<td><%= (@bench * 0.80).round  %></td>
+	<td>5</td>
+	<td id="bench_w1s2">80%</td>
+
+	<td><%= (@deadlift * 0.80).round  %></td>
+	<td>5</td>
+	<td id="deadlift_w1s2">80%</td>
+
+	<td><%= (@overhead * 0.80).round  %></td>
+	<td>5</td>
+	<td id="overhead_w1s2">80%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.85).round  %></td>
+	<td>5</td>
+	<td id="squat_w1s3">85%</td>
+
+	<td><%= (@bench * 0.85).round  %></td>
+	<td>5</td>
+	<td id="bench_w1s3">85%</td>
+
+	<td><%= (@deadlift * 0.85).round  %></td>
+	<td>5</td>
+	<td id="deadlift_w1s3">85%</td>
+
+	<td><%= (@overhead * 0.85).round  %></td>
+	<td>5</td>
+	<td id="overhead_w1s3">85%</td>
+</tr>
+
+<!-- WEEK 2 TABLE -->
+<table border="1" cellpadding="1" width="100%">
+<tr>
+<th colspan="12">Week 2</th>	
+</tr>
+<tr>
+	<th colspan="3">Day 1</th>
+	<th colspan="3">Day 2</th>
+	<th colspan="3">Day 3</th>
+	<th colspan="3">Day 4</th>
+</tr>
+
+<tr>
+	<th colspan="3">Squat</th>
+	<th colspan="3">Bench Press</th>
+	<th colspan="3">Deadlift</th>
+	<th colspan="3">Overhead Press</th>
+</tr>
+
+<tr>
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.80).round  %></td>
+	<td>3</td>
+	<td id="squat_w2s1">80%</td>
+
+	<td><%= (@bench * 0.80).round  %></td>
+	<td>3</td>
+	<td id="bench_w2s1">80%</td>
+
+	<td><%= (@deadlift * 0.80).round  %></td>
+	<td>3</td>
+	<td id="deadlift_w2s1">80%</td>
+
+	<td><%= (@overhead * 0.80).round  %></td>
+	<td>3</td>
+	<td id="overhead_w2s1">80%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.85).round  %></td>
+	<td>3</td>
+	<td id="squat_w2s2">85%</td>
+
+	<td><%= (@bench * 0.85).round  %></td>
+	<td>3</td>
+	<td id="bench_w2s2">85%</td>
+
+	<td><%= (@deadlift * 0.85).round  %></td>
+	<td>3</td>
+	<td id="deadlift_w2s2">85%</td>
+
+	<td><%= (@overhead * 0.85).round  %></td>
+	<td>3</td>
+	<td id="overhead_w2s2">85%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.90).round  %></td>
+	<td>3</td>
+	<td id="squat_w2s3">90%</td>
+
+	<td><%= (@bench * 0.90).round  %></td>
+	<td>3</td>
+	<td id="bench_w2s3">90%</td>
+
+	<td><%= (@deadlift * 0.90).round  %></td>
+	<td>3</td>
+	<td id="deadlift_w2s3">90%</td>
+
+	<td><%= (@overhead * 0.90).round  %></td>
+	<td>3</td>
+	<td id="overhead_w2s3">90%</td>
+</tr>
+
+<!-- WEEK 3 TABLE -->
+<table border="1" cellpadding="1" width="100%">
+<tr>
+<th colspan="12">Week 3</th>	
+</tr>
+<tr>
+	<th colspan="3">Day 1</th>
+	<th colspan="3">Day 2</th>
+	<th colspan="3">Day 3</th>
+	<th colspan="3">Day 4</th>
+</tr>
+
+<tr>
+	<th colspan="3">Squat</th>
+	<th colspan="3">Bench Press</th>
+	<th colspan="3">Deadlift</th>
+	<th colspan="3">Overhead Press</th>
+</tr>
+
+<tr>
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+</tr>
+
+<tr>
+	<td><%= @calc.multiply(@squat, 0.75)  %></td>
+	<td>5</td>
+	<td id="squat_w3s1">75%</td>
+
+	<td><%= @calc.multiply(@bench, 0.75)  %></td>
+	<td>5</td>
+	<td id="bench_w3s1">75%</td>
+
+	<td><%= @calc.multiply(@deadlift, 0.75)  %></td>
+	<td>5</td>
+	<td id="deadlift_w3s1">75%</td>
+
+	<td><%= @calc.multiply(@overhead, 0.75)  %></td>
+	<td>5</td>
+	<td id="overhead_w3s1">75%</td>
+</tr>
+
+<tr>
+	<td><%= @calc.multiply(@squat, 0.85)  %></td>
+	<td>3</td>
+	<td id="squat_w3s2">85%</td>
+
+	<td><%= @calc.multiply(@multiply, 0.85)  %></td>
+	<td>3</td>
+	<td id="bench_w3s2">85%</td>
+
+	<td><%= @calc.multiply(@deadlift, 0.85)  %></td>
+	<td>3</td>
+	<td id="deadlift_w3s2">85%</td>
+
+	<td><%= @calc.multiply(@overhead, 0.85)  %></td>
+	<td>3</td>
+	<td id="overhead_w3s2">85%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.95).round  %></td>
+	<td>1</td>
+	<td id="squat_w3s3">95%</td>
+
+	<td><%= (@bench * 0.95).round  %></td>
+	<td>1</td>
+	<td id="bench_w3s3">95%</td>
+
+	<td><%= (@deadlift * 0.95).round  %></td>
+	<td>1</td>
+	<td id="deadlift_w3s3">95%</td>
+
+	<td><%= (@overhead * 0.95).round  %></td>
+	<td>1</td>
+	<td id="overhead_w3s3">95%</td>
+</tr>
+
+<!-- WEEK 4 TABLE -->
+<table border="1" cellpadding="1" width="100%">
+<tr>
+<th colspan="12">Week 4</th>	
+</tr>
+<tr>
+	<th colspan="3">Day 1</th>
+	<th colspan="3">Day 2</th>
+	<th colspan="3">Day 3</th>
+	<th colspan="3">Day 4</th>
+</tr>
+
+<tr>
+	<th colspan="3">Squat</th>
+	<th colspan="3">Bench Press</th>
+	<th colspan="3">Deadlift</th>
+	<th colspan="3">Overhead Press</th>
+</tr>
+
+<tr>
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+
+	<td>Weight</td>
+	<td>Reps</td>
+	<td>%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.60).round  %></td>
+	<td>5</td>
+	<td id="squat_w4s1">60%</td>
+
+	<td><%= (@bench * 0.60).round  %></td>
+	<td>5</td>
+	<td id="bench_w4s1">60%</td>
+
+	<td><%= (@deadlift * 0.60).round  %></td>
+	<td>5</td>
+	<td id="deadlift_w4s1">60%</td>
+
+	<td><%= (@overhead * 0.60).round  %></td>
+	<td>5</td>
+	<td id="overhead_w4s1">60%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.65).round  %></td>
+	<td>5</td>
+	<td id="squat_w4s2">65%</td>
+
+	<td><%= (@bench * 0.65).round  %></td>
+	<td>5</td>
+	<td id="bench_w4s2">65%</td>
+
+	<td><%= (@deadlift * 0.65).round  %></td>
+	<td>5</td>
+	<td id="deadlift_w4s2">65%</td>
+
+	<td><%= (@overhead * 0.65).round  %></td>
+	<td>5</td>
+	<td id="overhead_w4s2">65%</td>
+</tr>
+
+<tr>
+	<td><%= (@squat * 0.70).round  %></td>
+	<td>5</td>
+	<td id="squat_w4s3">70%</td>
+
+	<td><%= (@bench * 0.70).round  %></td>
+	<td>5</td>
+	<td id="bench_w4s3">70%</td>
+
+	<td><%= (@deadlift * 0.70).round  %></td>
+	<td>5</td>
+	<td id="deadlift_w4s3">70%</td>
+
+	<td><%=   %></td>
+	<td>5</td>
+	<td id="overhead_w4s3">70%</td>
+</tr>
+</table>
+
+</body>
+</html>

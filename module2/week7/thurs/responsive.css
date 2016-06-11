@@ -1,0 +1,8 @@
+@media screen and (min-width: 768px) {
+.float {
+	width: 50%;
+	}
+	[class*="float"] {
+		margin-left: 0%;
+	}
+}

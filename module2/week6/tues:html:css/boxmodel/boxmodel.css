@@ -1,0 +1,16 @@
+.box {
+	height: 150px;
+	background: #654678;
+	padding: 10px;
+	box-shadow: 2px 2px 2px 1px rgba(0,0,0,0.2);
+}
+
+.babybox {
+	height: 100px;
+	background: grey;
+	margin: 20px;
+}
+
+h1 {
+	width: 100%;
+}

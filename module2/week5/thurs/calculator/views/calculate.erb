@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head>
+	<title>Online Calculator - Results</title>
+</head>
+<body>
+	<h1>Aw shit, you did some math</h1>
+	<%= @message %>
+	<form action="/calculate_using_result" method="POST">
+		<input type="hidden" name="result" value=<%= @result%>>
+		
+		<button type="submit">Save Result</button>
+
+	</form>
+</body>
+</html>

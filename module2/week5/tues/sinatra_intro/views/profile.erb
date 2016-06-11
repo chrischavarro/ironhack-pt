@@ -1,2 +1,8 @@
-This is the profile for 
-<%= @username %>
+<title>Loserville, Population: <%= @username.capitalize%></title>
+
+<h2>Welcome to America's most deserted social network, <%= @username.capitalize %></h2>
+<form action="/logout" method="POST">
+<button value="logout">End Your Misery</button>
+</form>
+
+<img src="/tumbleweed.jpg">

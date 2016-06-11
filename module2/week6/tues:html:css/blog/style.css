@@ -1,0 +1,50 @@
+body {
+	font-family: Georgia,Cambria,"Times New Roman",Times,serif;
+}
+
+.heading {
+	font-family: "Calibre","Helvetica Neue","Helvetica","Arial",sans-seriff;
+	color: #242224;
+}
+
+.title {
+	font-size: 40px;
+}
+
+.subtitle {
+	font-size: 32px;
+}
+
+.author {
+	font-size: 20px;
+	color: #c9353a;
+}
+
+.date {
+	font-size: 18px;
+	color: grey;
+}
+
+img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	width: 75%;
+}
+
+ul {
+	list-style-type: none;
+}
+
+.quote {
+	font-size: 16px;
+}
+
+.post {
+	font-size: 20px;
+	color: grey;
+}
+
+.comment {
+	font-weight: bold;
+}

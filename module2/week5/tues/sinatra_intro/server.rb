@@ -9,29 +9,32 @@ users = {
 	faraz: "password",
 	christian: "mudkip"
 }
-# session[:current_user] = faraz/josh/your name
-# Create another route to verify if the user's credentials are valid
 
-get "/" do
+get "/log_in" do
 	erb :login
 end
 
-post "/login" do
+post "/verify" do
 	@user = params[:username].to_sym
 	@pass = params[:password]
 	# binding.pry
 	if (users.has_key? @user) && (users[@user] == @pass)
 		session[:saved_value] = @user
-
-		erb :welcome
+		redirect to("/users/#{@user}")
 	else
-		redirect "/"
+		redirect to "/log_in"
 	end
+end
+
+get "/users/:username" do
+	@username = params[:username]
+
+	erb :profile
 end
 
 post "/logout" do
 	session.clear
-	redirect "/"
+	redirect "/log_in"
 end
 
 # get "/welcome" do
@@ -39,12 +42,6 @@ end
 # 	erb :welcome
 
 # end
-
-get "/users/:username" do
-	@username = params[:username]
-
-	erb :profile
-end
 
 get "/session_test/:text" do
 	text = params[:text]

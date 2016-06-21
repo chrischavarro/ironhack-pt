@@ -1,3 +1,51 @@
-<% @bob[0..19].each do | tim | %>
-<img src="<%=tim.poster %>" width="100px">
-<% end %>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Netflix and Chill Generator</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="container">
+	<div class="top" style="height:73px;">
+		<ul class="nav nav-pills pull-right">
+			<li><a href="www.jalexy.sexy">Home </a></li>
+			<li><a href="www.jalexy.sexy">About </a></li> 
+			<li><a href="www.jalexy.sexy">Contact</a></li>
+			<li><img src="minihorse.png" width="53px"></li>
+		</ul>
+	</div>
+
+	<h1>Which movie was released in <%= @jim.year %>?</h1>
+	<div class="row">
+	<% @bob.each do | tim | %>
+		<div class="col-md-4">
+		<% if @jim.year == tim.year %>
+			<button type="submit" id="year" value="<%= tim.year%>" name="year" onClick="alert('NERD')">
+			<img src="<%=tim.poster %>" width="100%" height="200px">
+			</button>
+		<% else %>
+			<button type="submit" id="year" value="<%= tim.year%>" name="year" onClick="alert('Fuck off')">
+			<img src="<%=tim.poster %>" width="100%" height="200px">
+			</button>
+		<% end %>
+		</div>
+	<% end %>
+	</div>
+
+	<div class="bottom" style="height:73px;">
+		<ul class="nav foot pull-left">
+			<li><a href="www.facebook.com">Facebook</a></li>
+			<li><a href="www.twitter.com">Twitter</a></li>
+			<li><a href="www.linkedin.com">LinkedIn</a></li>
+		</ul>
+
+	</div>
+
+</div>
+</body>
+</html>
+
+
+

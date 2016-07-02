@@ -1,0 +1,21 @@
+<!-- Must call on project before time entry because the latter is nested in the former -->
+<% if @time_entry.errors.any? %>
+	<ul>
+		<% @time_entry.errors.full_messages.each do |error_msg| %>
+		<li><%= error_msg %></li>
+		<% end %>
+	</ul>
+<% end %>
+<%= form_for [@project, @time_entry] do |f| %>
+	<%= f.label :hours %>
+	<%= f.text_field :hours %>
+	<br>
+	<%= f.label :minutes %>
+	<%= f.text_field :minutes %>
+	<br>
+	<%= f.label :date %>
+	<%= f.date_field :date %>
+	<br>
+
+	<%= f.submit 'Save' %>
+<% end %>

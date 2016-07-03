@@ -1,0 +1,13 @@
+<ul>
+	<% @projects.each do |project| %>
+		<li>
+		<%= link_to(project.name, project_time_entries_path()) %> 
+		<% if project.description.present? %>
+			- <%= project.description %>
+		<% end %>
+	</li>
+	<% end %>
+</ul>
+
+<%= link_to("List of Projects", projects_path) %>
+<%= link_to("Add new time entry", new_project_time_entry_path(@project)) %>

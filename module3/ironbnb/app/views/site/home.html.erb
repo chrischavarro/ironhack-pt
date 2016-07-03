@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<h1>Home</h1>
+<ul>
+	<% @homes.each do |home| %>
+		<li>
+		<%= home.title %> 
+	</li>
+	<% end %>
+</ul>
+</body>
+</html>

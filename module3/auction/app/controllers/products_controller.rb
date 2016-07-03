@@ -22,10 +22,7 @@ class ProductsController < ApplicationController
 	end
 
 	def show
-		@product = Product.find_by(params[:title])
-		@title = @product.title
-		@description = @product.description
-		@deadline = @product.deadline
+		@product = Product.find_by(id: params[:id])
 
 	end
 

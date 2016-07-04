@@ -27,3 +27,6 @@ class ProductsController < ApplicationController
 	end
 
 end
+
+# Lessons learned: 
+# For product.find_by, have to put id and THEN the params

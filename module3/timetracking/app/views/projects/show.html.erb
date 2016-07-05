@@ -1,2 +1,5 @@
 <h1> This project is called <%= @project.name %> </h1>
 <p>and its description is <%= @project.description %></p>
+
+<%= link_to("List of Projects", projects_path) %>
+<%= link_to("Add new time entry", new_project_time_entry_path(@project)) %>

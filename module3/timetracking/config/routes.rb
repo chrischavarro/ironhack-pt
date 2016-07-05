@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   get '/contact' => 'site#contact'
 
   resources :projects, only: [:index, :show, :new, :create] do
-    resources :time_entries, only: [:index, :new, :create]
+    resources :time_entries, only: [:index, :new, :create, :edit, :update]
   end
+
 
   # get '/projects' => 'projects#index'
   # get '/projects/new' => 'projects#new'

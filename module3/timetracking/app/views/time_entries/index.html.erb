@@ -4,6 +4,7 @@
 		<li>
 		<%= time_entry.hours %> h
 		<%= time_entry.minutes %> m - 
+		<%= link_to("Edit this entry", edit_project_time_entry_path(@project, time_entry)) %>
 		</li>
 	<% end %>
 </ol>

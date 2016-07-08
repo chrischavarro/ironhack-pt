@@ -23,6 +23,9 @@ class ProductsController < ApplicationController
 
 	def show
 		@product = Product.find_by(id: params[:id])
+		@bids = @product.bids.order(amount: :desc)
+		@high_bid = @bids.first
+		@bid = Bid.new
 
 	end
 

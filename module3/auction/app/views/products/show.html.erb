@@ -8,4 +8,29 @@
 	</li>
 </ul>
 
+<% if Time.now < @product.deadline %>
+	<% @bids.each do |bid| %>
+		<li>
+			$<%= bid.amount  %> - <b>Bidder:</b>
+			<%= bid.user.name  %>
+		</li>
+	<% end %>
+	<%= form_for [@product, @bid] do |f| %>
+		<%= f.label :amount %>:
+		<%= f.text_field :amount %>
+		<br>
+		<%= f.label :email %>:
+		<%= f.text_field :email %>
+		<br>
+		<%= f.submit 'Place Bid' %>
+	<% end %>
+<% else %>
+	$<%= @high_bid.amount if @high_bid %> - <b>Winning Bidder:</b>
+	<%= @high_bid.user.name if @high_bid %>
+
+<% end %>
+
+<%= link_to("Cancel", products_path) %>
+
 <%= link_to("Back to Products", products_path)  %>
+

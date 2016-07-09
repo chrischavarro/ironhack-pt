@@ -1,0 +1,9 @@
+<h1>Search Results</h1>
+<% @concert_filter.each do |concert| %>
+	<ul>
+		<li>
+			<%= concert.artist %>
+		</li>
+	</ul>
+<% end %>
+<%= link_to("Back to Main Menu", concerts_path) %>

@@ -1,0 +1,9 @@
+<% @popular_concerts.each do |concert| %>
+	<ul>
+		<li>
+			<%= concert.artist %>
+		</li>
+	</ul>
+<% end %>
+
+<%= link_to("Back to Concerts Home", concerts_path) %>

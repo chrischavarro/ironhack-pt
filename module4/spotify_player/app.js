@@ -11,7 +11,7 @@ $(document).on('ready', function() {
             url: `https://api.spotify.com/v1/search?q=${search_term}&type=track`,
             success: function(response) {
       			var songs = response.tracks.items[0]
-                songList(songs)
+                currentSong(songs)
                 showMore(response)
             },
             error: function(error){
@@ -22,18 +22,7 @@ $(document).on('ready', function() {
         })
 
     $('.btn-play').on('click', function(){
-        if ($('.btn-play').hasClass("playing")){
-            $('.js-player').trigger('pause');
-        } else {
-            $('.js-player').trigger('play');
-        }
-        
-        $('.btn-play').toggleClass('playing');
-        // if ('.js-player'.paused == false){
-        //     $('.js-player').trigger('play');
-        // } else {
-        //     $('.js-player').trigger('pause');
-        // }   
+        checkPlay()
     })
 
     $('.author').on('click', '.artist_link', function(event) {
@@ -43,7 +32,6 @@ $(document).on('ready', function() {
             type: "GET",
             url: `https://api.spotify.com/v1/artists/${artistId}`,
             success: function(response){
-                // $('.modal-body').empty()
 
                 showArtist(response, artistName);
             },
@@ -53,13 +41,15 @@ $(document).on('ready', function() {
 
     $('.modal-all-songs').on('click', '.song_link', function(event) {
         var songId = $(event.currentTarget).data("artist-song")
-        // console.log(extraSong)
+        checkPlay()
 
         $.ajax({
             type: "GET",
             url: `https://api.spotify.com/v1/tracks/${songId}`,
             success: function(response){
-                songList(response)
+                $('.progress_bar').attr('value', '0');
+                currentSong(response)
+                $('#see-more').modal('hide')
             },
             error: console.log("Derp")
         })
@@ -68,11 +58,41 @@ $(document).on('ready', function() {
     $('.see_more').on('click', function(){
         $('#see-more').modal('show');
     })
+
+    $('.modal-artist-see-albums').on('click', function(event){
+        var artistId = $(event.currentTarget).data("artist-id")
+        var artistName = $(event.currentTarget).data("artist-name")
+        
+        $('#artist-albums').modal('show');
+
+        $.ajax({
+            type: "GET",
+            url: `https://api.spotify.com/v1/artists/${artistId}/albums`,
+            success: function(response){
+                showAlbums(response, artistName);
+            },
+            error: console.log("Derp")
+        })
+    })
+
 });
+
+// FUNCTIONS
+
+function checkPlay(){
+    if ($('.btn-play').hasClass("playing")){
+        $('.js-player').trigger('pause');
+    } else {
+        $('.js-player').trigger('play');
+    }
+
+    $('.btn-play').toggleClass('playing');
+}
 
 function showMore(response) {
     // console.log(moreSongs)
     var moreSongs = response.tracks.items;
+    $('.modal-all-songs').empty()
     moreSongs.forEach(addSongs);
 }
 
@@ -85,6 +105,32 @@ function addSongs(song) {
     $('.modal-all-songs').append(newSong)
 }
 
+function showAlbums(response, artistName) {
+    // console.log(response)
+    albums = response.items
+    $('.modal-artist-albums').empty()
+    albums.forEach(appendAlbums)
+}
+
+function appendAlbums(album) {
+    var albumImage;
+    if (album.images[1]){
+        albumImage = album.images[1].url
+    } else {
+        albumImage = "https://placehold.it/200x200"
+    }
+
+    var html = `
+    <li>
+    <h4>${album.name}<h4>
+    <img src="${albumImage}">
+    
+    </li>
+    `
+    $(".modal-artist-albums").append(html)
+
+}
+
 function showArtist(response, artistName) {
     // console.log(response)
     var artist = response
@@ -92,17 +138,23 @@ function showArtist(response, artistName) {
     var image = artist.images[2].url
     var genre = artist.genres[0]
     var popularity = artist.popularity
+    var albums = `See ${artistName}'s albums`
 
     $('.modal-artist-name').text(artistName);
-    $('.modal').modal('show');
+    $('#artist-info').modal('show');
     $('.modal-artist-image').attr('src', image);
     $('.modal-artist-genre').append(genre);
     $('.modal-artist-popularity').append(popularity);
     $('.modal-artist-followers').append(followers);
+    $('.modal-artist-see-albums').text(albums);
+    $('.modal-artist-see-albums').attr({
+        'data-artist-id': artist.id,
+        'data-artist-name': artist.name
+    });
 }
 
-function songList(song) {
-    console.log(song)
+function currentSong(song) {
+    // console.log(song)
     var name = `${song.name} `;
     var artists = `<p class="artist_link" 
         data-artist-id="${song.artists[0].id}" 

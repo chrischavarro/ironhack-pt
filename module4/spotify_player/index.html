@@ -5,17 +5,18 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<form id="form" method="GET">
+	<form id="form" method="GET" class="center">
 		<input type="text" id="search_term" placeholder="Search for:">
 		<button type="submit" id="search">Search</button>
 	</form>
+	<button class="see_more">See More Results</button>
 
 	<div class="widget">
 		<div class="header">
 		<!-- Try adding/removing these classes: -->
 		<!-- disabled -->
 		<!-- playing -->
-		<div class="btn-play disabled"></div>
+		<div class="btn-play"></div>
 
 		<div class="metadata">
 		  <p class="title"></p>
@@ -32,32 +33,34 @@
 
 		<audio src="https://p.scdn.co/mp3-preview/8e9c5ffdc38e91659bfe8b6bd44650dfc25a3d31" id="audio" class="js-player"></audio>
 	</div>
-	<button class="see_more">See More Results</button>
 
-	<div class="modal fade js-modal">
-  <div class="modal-dialog">
-    <div class="modal-content">
+<!-- SEE ARTIST INFO MODAL -->
+	<div class="modal fade js-modal" id="artist-info">
+  <div class="modal-dialog" id="artist-info">
+    <div class="modal-content" id="artist-info">
 
-      <div class="modal-header">
+      <div class="modal-header" id="artist-info">
         <!-- Close button -->
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span>&times;</span>
         </button>
 
-        <h2 class="modal-artist-name"></h2>
+        <h2 class="modal-artist-name" id="artist-info"></h2>
       </div>
 
-      <div class="modal-body">
-        <img src="" class="modal-artist-image">
-        <p class="modal-artist-genre"><b>Genre:</b> </p>
-        <p class="modal-artist-followers"><b>Followers:</b> </p>
-        <p class="modal-artist-popularity"><b>Popularity:</b> </p>
+      <div class="modal-body" id="artist-info">
+        <img src="" class="modal-artist-image" id="artist-info">
+        <p class="modal-artist-genre" id="artist-info"><b>Genre:</b> </p>
+        <p class="modal-artist-followers" id="artist-info"><b>Followers:</b> </p>
+        <p class="modal-artist-popularity" id="artist-info"><b>Popularity:</b> </p>
+      	<button class="modal-artist-see-albums"></button>
       </div>
 
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
 
+<!-- SEE MORE RESULTS MODAL -->
 <div class="modal fade js-modal" id="see-more">
   <div class="modal-dialog" id="see-more">
     <div class="modal-content" id="see-more">
@@ -72,7 +75,31 @@
       </div>
 
       <div class="modal-list" id="see-more">
-      	<ul class="modal-all-songs">
+      	<ul class="modal-all-songs"></ul>
+      </div>
+
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+
+<!-- SEE ARTIST'S ALBUMS MODAL -->
+<div class="modal fade js-modal" id="artist-albums">
+  <div class="modal-dialog" id="artist-albums">
+    <div class="modal-content" id="artist-albums">
+
+      <div class="modal-header" id="artist-albums">
+        <!-- Close button -->
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="artist-albums">
+          <span>&times;</span>
+        </button>
+
+        <h2>All Albums</h2>
+      </div>
+
+      <div class="modal-list" id="artist-albums">
+        <ul class="modal-artist-albums"></ul>
       </div>
 
     </div><!-- /.modal-content -->

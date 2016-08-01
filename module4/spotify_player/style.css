@@ -6,6 +6,17 @@
   display: block;
 }
 
+.center {
+  position: absolute;
+  left: 550px;
+}
+
+.see_more {
+  position: absolute;
+  right: 60.1%;
+  top: 40;
+}
+
 .header {
   height: 78px;
   background-color: #ccc;

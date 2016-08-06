@@ -147,10 +147,13 @@ function showArtist(response, artistName) {
     $('.modal-artist-popularity').text(popularity);
     $('.modal-artist-followers').text(followers);
     $('.modal-artist-see-albums').text(albums);
-    $('.modal-artist-see-albums').attr({
-        'data-artist-id': artist.id,
-        'data-artist-name': artist.name
-    });
+    $('.modal-artist-see-albums').data('artist-id', artist.id)
+    $('.modal-artist-see-albums').data('artist-name', artist.name)
+
+    // $('.modal-artist-see-albums').attr({
+    //     'data-artist-id': artist.id,
+    //     'data-artist-name': artist.name
+    // });
 }
 
 function currentSong(song) {

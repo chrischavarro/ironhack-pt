@@ -28,11 +28,12 @@ $(document).on('ready', function() {
     $('.author').on('click', '.artist_link', function(event) {
         var artistId = $(event.currentTarget).data("artist-id")
         var artistName = $(event.currentTarget).data("artist-name")
+            // $('#artist-info').empty()
+
         $.ajax({
             type: "GET",
             url: `https://api.spotify.com/v1/artists/${artistId}`,
             success: function(response){
-
                 showArtist(response, artistName);
             },
             error: console.log("Bye")
@@ -74,7 +75,6 @@ $(document).on('ready', function() {
             error: console.log("Derp")
         })
     })
-
 });
 
 // FUNCTIONS
@@ -106,8 +106,7 @@ function addSongs(song) {
 }
 
 function showAlbums(response, artistName) {
-    // console.log(response)
-    albums = response.items
+    var albums = response.items;
     $('.modal-artist-albums').empty()
     albums.forEach(appendAlbums)
 }
@@ -140,12 +139,13 @@ function showArtist(response, artistName) {
     var popularity = artist.popularity
     var albums = `See ${artistName}'s albums`
 
+
     $('.modal-artist-name').text(artistName);
     $('#artist-info').modal('show');
     $('.modal-artist-image').attr('src', image);
-    $('.modal-artist-genre').append(genre);
-    $('.modal-artist-popularity').append(popularity);
-    $('.modal-artist-followers').append(followers);
+    $('.modal-artist-genre').text(genre);
+    $('.modal-artist-popularity').text(popularity);
+    $('.modal-artist-followers').text(followers);
     $('.modal-artist-see-albums').text(albums);
     $('.modal-artist-see-albums').attr({
         'data-artist-id': artist.id,

@@ -7,8 +7,9 @@
 }
 
 .center {
-  position: absolute;
-  left: 550px;
+  position: relative;
+  left: 517px;
+  top: 5px;
 }
 
 .see_more {

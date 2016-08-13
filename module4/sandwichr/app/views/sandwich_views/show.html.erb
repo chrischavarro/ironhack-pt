@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<b>Sandwich Name: </b><%= @sandwich.name %> <br>
+<b>Bread Type: </b><%= @sandwich.bread_type %> <br>
+<b>Calories: </b><span class="sandwich_calories"><%= @sandwich.total_calories %></span> <br> 
+<b>Ingredients: </b>
+<ul class="ingredient_list">
+<% @ingredients.each do |ingredient| %>
+	<li><%= ingredient.name %>  </li>
+<% end %>
+</ul>
+<br>
+
+<% @ingredient_list.each do |ingredient| %>
+	<button data-ingredient-id="<%=ingredient.id%>" data-sandwich-id="<%= @sandwich.id %>" data-ingredient-calories="<%= ingredient.calories %>" class="ingredient"> <%= ingredient.name  %> </button>
+<% end %>
+<br>
+<br>
+<%= link_to("Index", sandwiches_path)  %>
+
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>
+

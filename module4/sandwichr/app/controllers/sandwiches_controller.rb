@@ -1,8 +1,8 @@
 class SandwichesController < ApplicationController
-	def index
-	  sandwiches = Sandwich.all
-	  render json: sandwiches
-	end
+	# def index
+	#   sandwiches = Sandwich.all
+	#   render json: sandwiches
+	# end
 
 	def create
 	  sandwich = Sandwich.create(sandwich_params)
@@ -51,7 +51,7 @@ class SandwichesController < ApplicationController
 		sandwich.save
 
 		render json: {:sandwich => sandwich,
-										:ingredients => sandwich.ingredients}
+										:ingredient => ingredient}
 
 	end
 
